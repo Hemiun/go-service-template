@@ -1,24 +1,15 @@
-# Шаблон сервиса на go
-Задает структуру проекта.  
-Реализует метод для опроса состояния(БД, kafka).  
-Работа со Swagger.  
-Конфигурирование.   
-Логирование.
+# Goland service template
+ - declare project structure
+ - implement ping endpoint for resource state checking
+ - swagger ui
 
-## [Как работать с шаблоном (HOW TO)](./docs/howto.md)
-## [Технологический стек](./docs/tech.md)
+## [HOW TO](./docs/howto.md)
+## [Technologies](./docs/tech.md)
 
-## swagger
+## swagger 
 
 ### [Swagger-ui](http://localhost:8080/swagger-ui/index.html)
 
-При необходимости заменить адрес и порт. Протокол - http
-
-### Генерация документации
-
-`swag init -g .\internal\app\main.go --output docs/swagger`  
-Сгенерированные файлы должны быть добавлены в репозиторий
-
-Upd: Вызов swag из корня почему-то перестал работать. WA:
+### Generate documentation
 > cd ./internal/app
 > swag init  --output ../../docs/swagger

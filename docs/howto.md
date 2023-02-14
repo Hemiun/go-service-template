@@ -1,39 +1,29 @@
-# Как работать с шаблоном сервиса
-Шаблон go-service-template является полноценным работоспособным сервисом. Его можно собрать, запустить и протестировать. 
+# How to work with template
+go-service-template is fully functional service. You can build, run and so on. 
+
 Далее описывается как из шаблона сделать новый сервис.  
 
-1. Создать пустой репозиторий для нового сервиса (далее имя нового сервиса - myservice)
-2. Клонировать репозиторий шаблона в локальную папку
-3. Переименовать корневую папку (go-service-template -> myservice) 
+1. Create empty repository for new service (fo example - myservice)
+2. Clone go-service-template
+3. Rename folder (go-service-template -> myservice) 
 > mv go-service-template myservice
 
-4. Заменяем remote на репозиторий, созданный на шаге 1
+4. Replace remote repository
 >   git remote rm origin
 >   git remote add origin git@myservice
 
-5. Выполнить переименование модуля. Скрипт выполнит замену в go.mod, .gitlab-ci.yaml, а также во всех импорта в go файлах.  В качестве параметра в скрипт передается имя нового модуля: 
+5. Rename module name. Script will change go.mod, .gitlab-ci.yaml and import paths in  all go files.   
 >  ./scripts/renameModule.sh  "myservice"
 
-6. Выполнить проверку зависимостей
+6. Check dependencies
 >   go mod tidy
 >   go mod verify
 
-Измененные файлы go.mod и go.sum должны быть добавлены в репозиторий 
-7. Подготовить БД для локальной работы
-- Создать БД (./scripts/01.database.sql)
-- Создать пользователей и схему БД (./scripts/02.schema.sql)
-8. Сгенерировать файлы документации для swagger. Сгенерированные файлы(../../docs/swagger) должны быть добавлены в репозиторий. 
+7. Prepare database 
+- create database (./scripts/01.database.sql)
+- create users and schema (./scripts/02.schema.sql)
+8. Generate swagger docs. Generated files (../../docs/swagger) must be added to repository. 
 > cd ./internal/app
 > swag init  --output ../../docs/swagger
-9. Места в коде, где требуется внести изменения для нового сервиса помечены TODO. Необходимо пройти по всем таким меткам и сделать правки.  
-Особое внимание обратить на Dockerfile, Makefile и пакет config
-
-10. Настроить run configurations в IDE. 
-   Рекомендую иметь как минимум три конфигурации:
-   - main (локальный запуск сервиса)
-   - docker (сборка и запуск в контейнере)
-   - all tests (прогон всех модульных тестов)  
-**При работе в Windows необходимо изменить в IDE символ переноса строк на Unix style**. 
-12. Проверить тесты, запустить и проверить сервис в локальном окружении
-13. Собрать и запустить в контейнере. 
-14. По результатам сделать  git push 
+9. Check and fix TODO
+10. git push 
