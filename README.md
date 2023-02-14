@@ -1,6 +1,6 @@
-# Goland service template
- - declare project structure
- - implement ping endpoint for resource state checking
+# Golang service template
+ - declares project structure
+ - implements ping endpoint for resource state checking
  - swagger ui
 
 ## [HOW TO](./docs/howto.md)
