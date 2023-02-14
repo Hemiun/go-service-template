@@ -1,0 +1,27 @@
+passport:
+  serviceName: "go-service-template"
+server:
+  address: ":8080"
+database:
+  address: "127.0.0.1"
+  port: 5432
+  db: "territory"
+  username: "go_service_template_ms"
+  password: "go_service_template_ms"
+pgPool:
+  maxConnLifetime: 1h
+  maxConnIdleTime: 120s
+  maxConns: 5
+  minConns: 2
+  healthCheckPeriod: 60s
+  lazyConnect: false
+  logPGX: true
+  pgxLogLevel: "info"
+kafka:
+  brokerList:
+    - "localhost:9092"
+  logSarama: false
+httpClient:
+  requestTimeout: 30s
+logger:
+  logLevel: "info"

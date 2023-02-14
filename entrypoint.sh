@@ -1,0 +1,2 @@
+#!/bin/bash
+$SERVICE_HOME/$SERVICE_NAME

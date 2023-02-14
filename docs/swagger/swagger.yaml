@@ -1,0 +1,68 @@
+basePath: /api/v1
+definitions:
+  dto.Ping:
+    properties:
+      message:
+        type: string
+      status:
+        type: string
+      statusDB:
+        type: string
+      statusKafka:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: go-service-template
+  title: Echo Swagger  API
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: Method for service checking
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Ping'
+      summary: send ping query to service
+      tags:
+      - ""
+  /pingviaclient:
+    get:
+      consumes:
+      - application/json
+      description: Method for service checking
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Ping'
+      summary: send ping query to yourself via http client
+      tags:
+      - ""
+  /pingwithdelay:
+    get:
+      consumes:
+      - application/json
+      description: Method for service checking
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Ping'
+      summary: send ping query to service with delay 30 sec
+      tags:
+      - ""
+schemes:
+- http
+swagger: "2.0"
